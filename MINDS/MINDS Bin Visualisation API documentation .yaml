@@ -1,0 +1,912 @@
+openapi: 3.0.3
+info:
+  title: 'MINDS Bin Visualisation API documentation '
+  version: 1.0.0
+  description: This is Bin Visualisation API documentation.
+paths:
+  /api/v1.0/bin_main/bin_cell_details/:
+    get:
+      operationId: bin_cell_details_list
+      description: Get the list of Throughput values for the bins
+      parameters:
+      - in: query
+        name: cell_name
+        schema:
+          type: string
+      - in: query
+        name: grid_id
+        schema:
+          type: integer
+      - in: query
+        name: observation_duration
+        schema:
+          type: string
+      tags:
+      - bin_cell_details
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BinBgsRsrqGeneral'
+          description: ''
+  /api/v1.0/bin_main/bin_geo_fencing_cluster/:
+    post:
+      operationId: bin_geo_fencing_cluster_create
+      description: Total Number of Complaints for - Past Week 7 days and Year to Date
+      tags:
+      - bin_geo_fencing_cluster
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TotalNumberOfCompliantRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TotalNumberOfCompliantRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TotalNumberOfCompliantRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TotalNumberOfCompliantRequest'
+          description: ''
+  /api/v1.0/bin_main/bin_geo_fencing_free_hand/:
+    post:
+      operationId: bin_geo_fencing_free_hand_create
+      description: Total Number of Complaints for - Past Week 7 days and Year to Date
+      tags:
+      - bin_geo_fencing_free_hand
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TotalNumberOfCompliantRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TotalNumberOfCompliantRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TotalNumberOfCompliantRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TotalNumberOfCompliantRequest'
+          description: ''
+  /api/v1.0/bin_main/bin_info_coverage/:
+    get:
+      operationId: bin_info_coverage_list
+      description: Get information on Coverage for Bin Detail Info
+      parameters:
+      - in: query
+        name: observation_duration
+        schema:
+          type: string
+      - in: query
+        name: queried_bin_id
+        schema:
+          type: string
+      tags:
+      - bin_info_coverage
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BinInfoCoverageGeneral'
+          description: ''
+  /api/v1.0/bin_main/bin_info_serving_cell/:
+    get:
+      operationId: bin_info_serving_cell_list
+      description: Get information on Coverage for Bin Detail Info - Serving Cell
+      parameters:
+      - in: query
+        name: observation_duration
+        schema:
+          type: string
+      - in: query
+        name: queried_bin_id
+        schema:
+          type: string
+      tags:
+      - bin_info_serving_cell
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BinInfoServingCellGeneral'
+          description: ''
+  /api/v1.0/bin_main/bin_neighbouring_cell_popup/:
+    get:
+      operationId: bin_neighbouring_cell_popup_list
+      description: Get the list of Throughput values for the bins
+      parameters:
+      - in: query
+        name: cell_name
+        schema:
+          type: string
+      tags:
+      - bin_neighbouring_cell_popup
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BinNeighbouringCell'
+          description: ''
+  /api/v1.0/bin_main/bin_rsrp/:
+    get:
+      operationId: bin_rsrp_list
+      description: Get the list of RSRP values for the bins
+      parameters:
+      - in: query
+        name: calculation_type
+        schema:
+          type: string
+      - in: query
+        name: center
+        schema:
+          type: string
+      - in: query
+        name: northeast
+        schema:
+          type: string
+      - in: query
+        name: northwest
+        schema:
+          type: string
+      - in: query
+        name: observation_duration
+        schema:
+          type: string
+      - in: query
+        name: radius
+        schema:
+          type: number
+      - in: query
+        name: southeast
+        schema:
+          type: string
+      - in: query
+        name: southwest
+        schema:
+          type: string
+      tags:
+      - bin_rsrp
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BinBgsRsrpGeneral'
+          description: ''
+  /api/v1.0/bin_main/bin_rsrq/:
+    get:
+      operationId: bin_rsrq_list
+      description: Get the list of RSRQ values for the bins
+      parameters:
+      - in: query
+        name: calculation_type
+        schema:
+          type: string
+      - in: query
+        name: center
+        schema:
+          type: string
+      - in: query
+        name: northeast
+        schema:
+          type: string
+      - in: query
+        name: northwest
+        schema:
+          type: string
+      - in: query
+        name: observation_duration
+        schema:
+          type: string
+      - in: query
+        name: radius
+        schema:
+          type: number
+      - in: query
+        name: southeast
+        schema:
+          type: string
+      - in: query
+        name: southwest
+        schema:
+          type: string
+      tags:
+      - bin_rsrq
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BinBgsRsrqGeneral'
+          description: ''
+  /api/v1.0/bin_main/bin_search/:
+    get:
+      operationId: bin_search_retrieve
+      tags:
+      - bin_search
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/v1.0/bin_main/bin_throughput/:
+    get:
+      operationId: bin_throughput_list
+      description: Get the list of Throughput values for the bins
+      parameters:
+      - in: query
+        name: calculation_type
+        schema:
+          type: string
+      - in: query
+        name: center
+        schema:
+          type: string
+      - in: query
+        name: northeast
+        schema:
+          type: string
+      - in: query
+        name: northwest
+        schema:
+          type: string
+      - in: query
+        name: observation_duration
+        schema:
+          type: string
+      - in: query
+        name: radius
+        schema:
+          type: number
+      - in: query
+        name: southeast
+        schema:
+          type: string
+      - in: query
+        name: southwest
+        schema:
+          type: string
+      tags:
+      - bin_throughput
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BinCIThroughputGeneral'
+          description: ''
+  /api/v1.0/bin_main/bin_top_five_cells/:
+    get:
+      operationId: bin_top_five_cells_list
+      description: Get the list of Throughput values for the bins
+      parameters:
+      - in: query
+        name: calculation_type
+        schema:
+          type: string
+      - in: query
+        name: grid_id
+        schema:
+          type: integer
+      - in: query
+        name: observation_duration
+        schema:
+          type: string
+      tags:
+      - bin_top_five_cells
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BinBgsRsrqGeneral'
+          description: ''
+  /api/v1.0/bin_main/border/:
+    get:
+      operationId: border_list
+      description: Get the border of the bin
+      parameters:
+      - in: query
+        name: center
+        schema:
+          type: string
+      - in: query
+        name: northeast
+        schema:
+          type: string
+      - in: query
+        name: northwest
+        schema:
+          type: string
+      - in: query
+        name: radius
+        schema:
+          type: string
+      - in: query
+        name: southeast
+        schema:
+          type: string
+      - in: query
+        name: southwest
+        schema:
+          type: string
+      tags:
+      - border
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BinBorder'
+          description: ''
+  /api/v1.0/bin_main/cell_4g_details/:
+    get:
+      operationId: cell_4g_details_list
+      description: Get the list of Cell 4G details
+      parameters:
+      - in: query
+        name: site_id
+        schema:
+          type: string
+      - in: query
+        name: site_id__in
+        schema:
+          type: array
+          items:
+            type: string
+        description: Multiple values may be separated by commas.
+        explode: false
+        style: form
+      tags:
+      - cell_4g_details
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cell4gGeneral'
+          description: ''
+  /api/v1.0/bin_main/hwc_clover/:
+    get:
+      operationId: hwc_clover_retrieve
+      description: Get the border of the bin
+      tags:
+      - hwc_clover
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/v1.0/bin_main/site_4g_details/:
+    get:
+      operationId: site_4g_details_list
+      description: Get the list of Site4G details
+      parameters:
+      - in: query
+        name: site_id
+        schema:
+          type: string
+      - in: query
+        name: site_id__contains
+        schema:
+          type: string
+      - in: query
+        name: site_id__icontains
+        schema:
+          type: string
+      - in: query
+        name: site_id__in
+        schema:
+          type: array
+          items:
+            type: string
+        description: Multiple values may be separated by commas.
+        explode: false
+        style: form
+      - in: query
+        name: tdd_site_id
+        schema:
+          type: string
+      - in: query
+        name: tdd_site_id__contains
+        schema:
+          type: string
+      - in: query
+        name: tdd_site_id__icontains
+        schema:
+          type: string
+      - in: query
+        name: tdd_site_id__in
+        schema:
+          type: array
+          items:
+            type: string
+        description: Multiple values may be separated by commas.
+        explode: false
+        style: form
+      tags:
+      - site_4g_details
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Site4gGeneral'
+          description: ''
+    put:
+      operationId: site_4g_details_update
+      tags:
+      - site_4g_details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Site4gPut'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Site4gPut'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Site4gPut'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Site4gGeneral'
+          description: ''
+  /api/v1.0/bin_main/tm_cluster/:
+    get:
+      operationId: tm_cluster_retrieve
+      tags:
+      - tm_cluster
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+components:
+  schemas:
+    BinBgsRsrpGeneral:
+      type: object
+      properties:
+        grid_id:
+          type: integer
+          maximum: 4294967295
+          minimum: 0
+          format: int64
+        rsrp_min:
+          type: number
+          format: double
+          nullable: true
+        rsrp_max:
+          type: number
+          format: double
+          nullable: true
+        rsrp_avg:
+          type: number
+          format: double
+          nullable: true
+      required:
+      - grid_id
+    BinBgsRsrqGeneral:
+      type: object
+      properties:
+        grid_id:
+          type: integer
+          maximum: 4294967295
+          minimum: 0
+          format: int64
+        rsrq_min:
+          type: number
+          format: double
+          nullable: true
+        rsrq_max:
+          type: number
+          format: double
+          nullable: true
+        rsrq_avg:
+          type: number
+          format: double
+          nullable: true
+      required:
+      - grid_id
+    BinBorder:
+      type: object
+      properties:
+        grid_id:
+          type: integer
+          maximum: 4294967295
+          minimum: 0
+          format: int64
+        state:
+          type: string
+          nullable: true
+          maxLength: 20
+      required:
+      - grid_id
+    BinCIThroughputGeneral:
+      type: object
+      properties:
+        grid_id:
+          type: integer
+          maximum: 4294967295
+          minimum: 0
+          format: int64
+          readOnly: true
+        min_download_mbps:
+          type: number
+          format: double
+          nullable: true
+        max_download_mbps:
+          type: number
+          format: double
+          nullable: true
+        avg_download_mbps:
+          type: number
+          format: double
+          nullable: true
+      required:
+      - grid_id
+    BinInfoCoverageGeneral:
+      type: object
+      properties:
+        grid_id:
+          type: integer
+          maximum: 4294967295
+          minimum: 0
+          format: int64
+      required:
+      - grid_id
+    BinInfoServingCellGeneral:
+      type: object
+      properties:
+        grid_id:
+          type: integer
+          maximum: 4294967295
+          minimum: 0
+          format: int64
+        rsrp_min:
+          type: number
+          format: double
+          nullable: true
+        rsrp_max:
+          type: number
+          format: double
+          nullable: true
+        rsrp_avg:
+          type: number
+          format: double
+          nullable: true
+      required:
+      - grid_id
+    BinNeighbouringCell:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        local_cell_name:
+          type: string
+          nullable: true
+          maxLength: 100
+        local_site_id:
+          type: string
+          nullable: true
+          maxLength: 100
+        local_cell_id:
+          type: string
+          nullable: true
+          maxLength: 100
+        target_cell_name:
+          type: string
+          nullable: true
+          maxLength: 100
+        target_site_id:
+          type: string
+          nullable: true
+          maxLength: 100
+        target_cell_id:
+          type: string
+          nullable: true
+          maxLength: 100
+        handover_success:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        local_site_id_cell_id:
+          type: string
+          nullable: true
+          maxLength: 100
+        target_site_id_cell_id:
+          type: string
+          nullable: true
+          maxLength: 100
+        handover_success_rank:
+          type: number
+          format: double
+          nullable: true
+        azimuth:
+          type: number
+          format: double
+          nullable: true
+        sector_id:
+          type: number
+          format: double
+          nullable: true
+        vendor:
+          type: string
+          nullable: true
+          maxLength: 100
+        target_site_longitude:
+          type: number
+          format: double
+          nullable: true
+        target_site_latitude:
+          type: number
+          format: double
+          nullable: true
+        loading_datetime:
+          type: string
+          format: date-time
+          nullable: true
+      required:
+      - id
+    Cell4gGeneral:
+      type: object
+      properties:
+        cell_name:
+          type: string
+          maxLength: 150
+        cell_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          nullable: true
+        eci:
+          type: number
+          format: double
+          nullable: true
+        freq_band:
+          type: string
+          nullable: true
+        antenna_model:
+          type: string
+          nullable: true
+        rru:
+          type: string
+          nullable: true
+        azimuth:
+          type: number
+          format: double
+          nullable: true
+        antenna_height:
+          type: string
+          nullable: true
+        e_tilt:
+          type: string
+          nullable: true
+        m_tilt:
+          type: string
+          nullable: true
+        pci:
+          type: number
+          format: double
+          nullable: true
+        rs_power:
+          type: number
+          format: double
+          nullable: true
+        date_status_rfs:
+          type: string
+          nullable: true
+        radius:
+          type: number
+          format: double
+          nullable: true
+        bandwidth:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+          nullable: true
+        sector_id:
+          type: number
+          format: double
+          nullable: true
+        site_cell_id:
+          type: string
+          nullable: true
+          maxLength: 150
+        site_id:
+          type: string
+      required:
+      - cell_name
+      - site_id
+    Location:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+          maximum: 90.0
+          minimum: -90.0
+        lon:
+          type: number
+          format: double
+          maximum: 180
+          minimum: -180
+      required:
+      - lat
+      - lon
+    Site4gGeneral:
+      type: object
+      properties:
+        site_id:
+          type: string
+          maxLength: 50
+        tdd_site_id:
+          type: string
+          nullable: true
+        vendor:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        type_map:
+          type: string
+          nullable: true
+        rollout:
+          type: string
+          nullable: true
+        region:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        mukim_area:
+          type: string
+          nullable: true
+        cluster_id:
+          type: string
+          nullable: true
+        cluster_name:
+          type: string
+          nullable: true
+        power:
+          type: string
+          nullable: true
+        backhaul:
+          type: string
+          nullable: true
+        enodeb_id:
+          type: string
+          nullable: true
+        tac:
+          type: string
+          nullable: true
+        tal:
+          type: string
+          nullable: true
+        rfp_morphology:
+          type: string
+          nullable: true
+        latitude:
+          type: number
+          format: double
+          nullable: true
+        longitude:
+          type: number
+          format: double
+          nullable: true
+        address:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        site_owner:
+          type: string
+          nullable: true
+        site_coords:
+          type: string
+          nullable: true
+      required:
+      - site_id
+    Site4gPut:
+      type: object
+      properties:
+        site_id:
+          type: string
+          maxLength: 50
+        status:
+          type: string
+          nullable: true
+      required:
+      - site_id
+    TotalNumberOfCompliantRequest:
+      type: object
+      properties:
+        polygon:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+          minItems: 3
+      required:
+      - polygon
+  securitySchemes:
+    jwtAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "token"
